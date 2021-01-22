@@ -7,7 +7,8 @@ def homepage(request):
 
 
 def books(request):
-    return render(request, "books.html")
+    todo_list = Books.objects.all()
+    return render(request, "books.html", {"todo_list": todo_list})
 
 
 
