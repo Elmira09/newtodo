@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Books(models.Model):
     title = models.CharField(max_length=100)
     subtitle =  models.CharField(max_length=100)
@@ -11,7 +12,6 @@ class Books(models.Model):
     published_at = models.DateField(auto_now_add=True)
 
 
-class Author(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=40)
+
    
+
