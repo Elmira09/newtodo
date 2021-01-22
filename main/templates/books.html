@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel = "stylesheet" href = '{"..//static/styles/styles.css"}'>
 </head>
 <body>
-    <h3>Модель для книг</h3>
-    {% for todo in todo_list %}
-    <h1>{{todo.title}}</h1>
+    <div class="todo_item">
+        <h3 class = "todo_item">Модель для книг</h3>
+        {% for books in todo_list %}
+       <h1 > {{ books.title }}</h1>
+       <h2> {{ books.subtitle}}</h2>
+       <footer>
+           {{ books.genre}}
+       </footer>
 
-    {% endfor %}
+        {% endfor %}
+    </div>
+    </body>
 </body>
 </html>
