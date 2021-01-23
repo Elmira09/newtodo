@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import Books
+from .models import Books, ToDo
 
 
 
@@ -17,4 +17,5 @@ def check(request):
     return HttpResponse("текшеруу")
 
 def test1(request):
-    return render(request, "test1.html") 
+    todo_list = ToDo.objects.all()
+    return render(request, "test1.html", {"todo_list": todo_list}) 
