@@ -7,6 +7,24 @@
     <link rel = "stylesheet" href = '{"..//static/styles/styles.css"}'>
 </head>
 <body>
+        <section>
+            <div >
+                <form method = "POST">
+                    {% csrf_token %}
+                    <input type="text" name="title" placeholder="Заголовок"><br><br>
+                    <input type="text" name="subtitle" placeholder="Подзаголовок"><br><br>
+                    <input type="text" name="description" placeholder="Описание"><br><br>
+                    <input type="number" name="price" placeholder="Цена"><br><br>
+                    <input type="text" name="genre" placeholder="Жанр"><br><br>
+                    <input type="text" name="author" placeholder="Автор"><br><br>
+                    <input type=
+
+
+                </form>
+
+            </div>
+        </section>
+    
     <div class="todo_item">
         <h3 >Модель для книг</h3>
         {% for books in todo_list %}
