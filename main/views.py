@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse
 from .models import Books
 
 
+
 def homepage(request):
     return render(request, "index.html")
 
@@ -14,3 +15,6 @@ def books(request):
 
 def check(request):
     return HttpResponse("текшеруу")
+
+def test1(request):
+    return render(request, "test1.html") 
