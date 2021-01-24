@@ -13,22 +13,21 @@ def books(request):
 
 
 
-def add_book(request):
-    form = request.POST
-    book = Books(
-        title=form["title"],
-        subtitle=form["subtitle"],
-        description=form["description"],
-        price=form["price"],
-        genre=form["genre"],
-        author=form["author"],
-        year=form["date"][:10]
+#def add_book(request):
+    #form = request.POST
+    #title=form["title"],
+      #  subtitle=form["subtitle"],
+       # description=form["description"],
+       # price=form["price"],
+     #   genre=form["genre"],
+     #   author=form["author"],
+     #   year=form["date"][:10]
 
-    )
+    #)
 
-    book.save()
+    #book.save()
 
-    return redirect(book)
+    #return redirect(book)
 
 
 
@@ -50,10 +49,19 @@ def add_todo(request):
 
 def add_book(request):
     form = request.POST
-    text = form["title"]
-    books = Books(text=text)
+    books = Books(title=form['title'],
+                 subtitle=form['subtitle'],
+                 description=form['description'], 
+                 price=form['price'],
+                 genre=form['genre'],
+                 author=form['author'], 
+                 year=form['year'])
     books.save()
+
     return redirect(books)
+    
+
+
 
 
 def delete_todo(request, id):
