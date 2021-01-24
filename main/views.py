@@ -11,6 +11,8 @@ def books(request):
     todo_list = Books.objects.all()
     return render(request, "books.html", {"todo_list": todo_list})
 
+
+
 def add_book(request):
     form = request.POST
     book = Books(
@@ -26,7 +28,7 @@ def add_book(request):
 
     book.save()
 
-    return redirect(books)
+    return redirect(book)
 
 
 
@@ -37,6 +39,8 @@ def test1(request):
     todo_list = ToDo.objects.all()
     return render(request, "test1.html", {"todo_list": todo_list}) 
 
+
+
 def add_todo(request):
     form = request.POST
     text = form["todo_text"]
@@ -44,10 +48,23 @@ def add_todo(request):
     todo.save()
     return redirect(test1)
 
+def add_book(request):
+    form = request.POST
+    text = form["title"]
+    books = Books(text=text)
+    books.save()
+    return redirect(books)
+
+
 def delete_todo(request, id):
     todo = ToDo.objects.get(id=id)
     todo.delete()
     return redirect(test1)
+
+def delete_books(request, id):
+    books = Books.objects.get(id=id)
+    books.delete()
+    return redirect(books)
 
 def mark_todo(request, id):
     todo = ToDo.objects.get(id=id)
@@ -55,11 +72,23 @@ def mark_todo(request, id):
     todo.save()
     return redirect(test1)
 
+def mark_books(request, id):
+    books = Books.objects.get(id=id)
+    books.is_favorite = True
+    books.save()
+    return redirect(books)    
+
 def unmark_todo(request, id):
     todo = ToDo.objects.get(id=id)
     todo.is_favorite = False
     todo.save()
     return redirect(test1)
+
+def unmark_books(request, id):
+    books = Books.objects.get(id=id)
+    books.is_favorite = False
+    books.save()
+    return redirect(books)
 
 def close_todo(request, id):
     todo = ToDo.objects.get(id=id)
@@ -67,4 +96,8 @@ def close_todo(request, id):
     todo.save()
     return redirect(test1)
 
-
+def mark_books(request, id):
+    books = Books.objects.get(id=id)
+    books.is_favorite = True
+    books.save()
+    return redirect(books)

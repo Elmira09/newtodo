@@ -4,14 +4,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Todo</title>
+        <title>Книжный интернет магазин</title>
        <!-- <link rel="stylesheet" href="./styles/checkbox.css">  -->
         <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}">
         <link rel="stylesheet" href= "{% static 'styles/styles.css' %}">
         <!--<link rel="stylesheet" href= "./styles/styles.css"> -->
     </head>
 <body>
-
     <section>
         <div class = "todo_container">
             <form action = "{% url 'add-book' %}" method = "POST">
@@ -29,45 +28,56 @@
 
 
 
-        </div>
+        </div class = "books_styles">
+            <div >
+                </div>
+        
         
 
-            
-
-        </div>
-    </section>
-
-    <div class="todo_item">
-        <h3 >Модель для книг</h3>
-        <div >
-           
-
-           <div >
-               <div class="todo_item_header">
-                   
-                    {% for books in todo_list %}
-                    <div class = "div1">
-            
-                    
-                            <h3> {{ books.title }} </h3>
-                            <h3> {{ books.author }}</h3>
-                            <h3> {{ books.subtitle}}</h3>
-                            <h3> {{ books.genre}}</h3> 
-                            <p>{{books.description}}</p>
-                            <h4>{{ books.year}}</h4>
-                            <h4>{{books.price}}</h4>
-                            
-            
-                            {% endfor %}
-                    </div>   
-
-            
-               </div>
-               
-                   
+    
+                <div class= "todo_container">
+                    {%for books in todo_list %}
                   
-            
-    </div>
-    </body>
+                
+                            
+                            <div class="todo_item
+                    {% if todo.is_favorite %}
+                            marked
+                    {% elif todo.is_closed %}
+                            done
+                     
+                        {% endif %}
+                
+                ">
+                                <h3> {{ books.title }} </h3>
+                                <h3> {{ books.author }}</h3>
+                                <h3> {{ books.subtitle}}</h3>
+                                <h3> {{ books.genre}}</h3> 
+                                <p>{{books.description}}</p>
+                                <h4>{{books.price}}</h4>
+
+                                <div class = "todo_item_footer">
+                                    <h4>{{ books.year}}</h4>
+                                    <div class = "action_buttons">
+                                        {% if books.is_favorite %}
+                                        <a href = "{% url 'unmark-books' books.id%}"><button><img src="{% static './icons/13.png' %}"/></button></a>
+                                        {% else %}
+                                        <a href ="{% url 'mark-books'  books.id %}"><button><img src="{% static './icons/10.png' %}"/></button></a>
+                                        {% endif %}
+                                        <a href="{% url 'delete-books' books.id %}"><button><img src="{% static './icons/12.png' %}"/></button></a>
+
+                                    </div>
+                                </diV>
+                            </div>    
+
+                                
+                    {% endfor %}       
+
+
+
+
+                </div>
+            </div>
+    </section>
 </body>
 </html>
