@@ -20,13 +20,13 @@ def add_book(request):
         price=form["price"],
         genre=form["genre"],
         author=form["author"],
-        date=form["date"][:10]
+        year=form["date"][:10]
 
     )
 
     book.save()
 
-    return redirect(book)
+    return redirect(books)
 
 
 
@@ -54,4 +54,17 @@ def mark_todo(request, id):
     todo.is_favorite = True
     todo.save()
     return redirect(test1)
+
+def unmark_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_favorite = False
+    todo.save()
+    return redirect(test1)
+
+def close_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_closed = not todo.is_closed
+    todo.save()
+    return redirect(test1)
+
 
